@@ -1,24 +1,30 @@
-<!doctype html>
-<html lang="ru">
+
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="utf-8" />
-<title>Заглушка</title>
-<style>
-  body{
-    margin:0;
-    height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:#000;
-    color:#fff;
-    font-size:42px;
-    font-family:Arial, sans-serif;
-    letter-spacing:2px;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SUETA Mini App</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
+
 <body>
-ВСЁ ТОЛЬКО НАЧИНАЕТСЯ
+  <div class="container">
+    <h1 class="title">SUETA</h1>
+
+    <div class="card">
+      <h2>Welcome to SUETA</h2>
+      <p>Your fast & smooth Telegram mini-app!</p>
+      <button id="mainBtn">Start</button>
+    </div>
+
+    <div class="footer">
+      Powered by <span>SUETA Engine</span>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
 </body>
 </html>
