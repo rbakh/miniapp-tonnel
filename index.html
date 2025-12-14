@@ -1,138 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SUETA Mini App</title>
-  <script src="https://telegram.org/js/telegram-web-app.js"></script>
-  <style>
-    body {
-      margin: 0;
-      font-family: "Inter", sans-serif;
-      background: radial-gradient(circle at top, #1a1a1a, #000000);
-      color: #fff;
-      height: 100vh;
-      overflow-x: hidden;
-    }
+<meta charset="UTF-8">
+<title>SPACE</title>
 
-    .header {
-      padding: 25px;
-      text-align: center;
-    }
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
 
-    .title {
-      font-size: 42px;
-      font-weight: 900;
-      color: #ff007f;
-      text-shadow: 0 0 25px rgba(255, 0, 150, 0.6);
-      animation: glow 2.5s infinite;
-    }
+body {
+  background: #ffffff;
+  color: #0a1a3f;
+}
 
-    @keyframes glow {
-      0% { text-shadow: 0 0 15px rgba(255,0,150,0.6); }
-      50% { text-shadow: 0 0 35px rgba(255,0,150,1); }
-      100% { text-shadow: 0 0 15px rgba(255,0,150,0.6); }
-    }
+/* HEADER */
+header {
+  background: #0a1a3f;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-    .menu {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-      padding: 20px;
-    }
+header h1 {
+  color: #fff;
+  letter-spacing: 4px;
+}
 
-    .menu-item {
-      background: rgba(255, 255, 255, 0.06);
-      padding: 20px;
-      border-radius: 18px;
-      text-align: center;
-      font-size: 18px;
-      backdrop-filter: blur(12px);
-      cursor: pointer;
-      box-shadow: 0 0 25px rgba(255, 0, 120, 0.18);
-      transition: 0.3s;
-    }
+nav a {
+  color: #fff;
+  margin-left: 30px;
+  text-decoration: none;
+  opacity: 0.85;
+}
 
-    .menu-item:hover {
-      background: rgba(255, 0, 130, 0.25);
-      transform: scale(1.05);
-    }
+nav a:hover {
+  opacity: 1;
+}
 
-    .game-box {
-      padding: 20px;
-      margin: 20px;
-      background: rgba(255,255,255,0.07);
-      border-radius: 18px;
-      display: none;
-      box-shadow: 0 0 20px rgba(255,0,130,0.25);
-      text-align: center;
-    }
+/* LOGIN */
+.login-box {
+  max-width: 350px;
+  margin: 80px auto;
+  text-align: center;
+  border: 1px solid #e3e7f3;
+  border-radius: 16px;
+  padding: 40px;
+}
 
-    button {
-      width: 100%;
-      padding: 14px;
-      margin-top: 15px;
-      font-size: 18px;
-      border: none;
-      border-radius: 14px;
-      background: #ff007f;
-      color: white;
-      font-weight: 700;
-      box-shadow: 0 0 18px rgba(255,0,130,0.7);
-      cursor: pointer;
-      transition: 0.3s;
-    }
+.login-box input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  border-radius: 10px;
+  border: 1px solid #cdd4ea;
+}
 
-    button:hover {
-      background: #ff3aa1;
-    }
-  </style>
+.login-box button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #0a1a3f;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* MAIN */
+.container {
+  display: none;
+  max-width: 900px;
+  margin: 60px auto;
+  text-align: center;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.card {
+  border: 1px solid #e4e8f3;
+  border-radius: 18px;
+  padding: 40px 30px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: #0a1a3f;
+}
+
+/* GIFT ANIMATION */
+.gift {
+  font-size: 50px;
+  animation: float 2s infinite ease-in-out;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0); }
+}
+
+/* BATTLE PROGRESS */
+.progress-box {
+  margin-top: 25px;
+  background: #eef1fb;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 18px;
+  width: 0%;
+  background: #0a1a3f;
+  transition: width 0.5s;
+}
+
+button.battle-btn {
+  margin-top: 20px;
+  padding: 10px 25px;
+  border-radius: 10px;
+  border: none;
+  background: #0a1a3f;
+  color: #fff;
+  cursor: pointer;
+}
+
+footer {
+  margin: 80px 0 30px;
+  text-align: center;
+  font-size: 14px;
+  color: #7a86a8;
+}
+</style>
 </head>
 
 <body>
-  <div class="header">
-    <div class="title">SUETA</div>
+
+<header>
+  <h1>SPACE</h1>
+  <nav>
+    <a href="#">Gifts</a>
+    <a href="#">Battle</a>
+  </nav>
+</header>
+
+<!-- LOGIN -->
+<div class="login-box" id="login">
+  <h2>Login</h2>
+  <input type="text" id="username" placeholder="Enter username">
+  <button onclick="login()">Enter SPACE</button>
+</div>
+
+<!-- MAIN -->
+<div class="container" id="main">
+  <h2 id="welcome"></h2>
+  <p>Minimal • Clean • Competitive</p>
+
+  <div class="cards">
+    <!-- GIFTS -->
+    <div class="card">
+      <div class="gift">🎁</div>
+      <h3>Gifts</h3>
+      <span>Animated digital gifts</span>
+    </div>
+
+    <!-- BATTLE -->
+    <div class="card">
+      <h3>⚔️ Battle</h3>
+      <span>Win battles and earn progress</span>
+
+      <div class="progress-box">
+        <div class="progress" id="progress"></div>
+      </div>
+
+      <button class="battle-btn" onclick="battle()">Fight</button>
+    </div>
   </div>
+</div>
 
-  <div class="menu">
-    <div class="menu-item" onclick="openAPI()">API</div>
-    <div class="menu-item" onclick="openGame()">Game</div>
-    <div class="menu-item" onclick="sendStart()">Start</div>
-    <div class="menu-item" onclick="info()">Info</div>
-  </div>
+<footer>
+  © 2025 SPACE
+</footer>
 
-  <div id="game" class="game-box">
-    <h2>Мини‑игра SUETA</h2>
-    <p>Нажми кнопку и поймай число 1–5!</p>
-    <button onclick="playGame()">Играть</button>
-    <p id="gameResult" style="margin-top:15px;font-size:20px;"></p>
-  </div>
+<script>
+let progress = 0;
 
-  <script>
-    let tg = window.Telegram.WebApp;
-    tg.expand();
+function login() {
+  const user = document.getElementById("username").value;
+  if (!user) return;
 
-    function sendStart() {
-      tg.sendData("sueta_start_pressed");
-    }
+  document.getElementById("login").style.display = "none";
+  document.getElementById("main").style.display = "block";
+  document.getElementById("welcome").innerText = "Welcome, " + user;
+}
 
-    function openAPI() {
-      tg.sendData("sueta_open_api");
-    }
+function battle() {
+  if (progress < 100) {
+    progress += 20;
+    document.getElementById("progress").style.width = progress + "%";
+  }
+}
+</script>
 
-    function info() {
-      tg.sendData("sueta_info_request");
-    }
-
-    function openGame() {
-      document.getElementById("game").style.display = "block";
-    }
-
-    function playGame() {
-      let num = Math.floor(Math.random() * 5) + 1;
-      document.getElementById("gameResult").innerText = "Твоё число: " + num;
-      tg.sendData("sueta_game_num_" + num);
-    }
-  </script>
 </body>
 </html>
+
